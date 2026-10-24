@@ -1,5 +1,6 @@
 from pydantic import BaseModel, EmailStr, Field, ConfigDict
 from decimal import Decimal
+from datetime import datetime
 
 class UserCreate(BaseModel):
     email: EmailStr
@@ -20,3 +21,12 @@ class WalletOut(BaseModel):
     balance: Decimal
     ledger_total: Decimal
     consistent: bool
+
+
+class StockOut(BaseModel):
+    symbol: str
+    name: str
+    price: Decimal | None
+    price_updated_at: datetime | None
+
+    model_config = ConfigDict(from_attributes=True)

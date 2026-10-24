@@ -1,5 +1,5 @@
 from pydantic import BaseModel, EmailStr, Field, ConfigDict
-
+from decimal import Decimal
 
 class UserCreate(BaseModel):
     email: EmailStr
@@ -15,3 +15,8 @@ class UserOut(BaseModel):
 class Token(BaseModel):
     access_token: str
     token_type: str
+
+class WalletOut(BaseModel):
+    balance: Decimal
+    ledger_total: Decimal
+    consistent: bool

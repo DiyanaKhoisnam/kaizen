@@ -27,3 +27,13 @@ class LedgerEntry(Base):
     amount = Column(Numeric(14, 2), nullable=False)
     entry_type = Column(String, nullable=False)
     created_at = Column(DateTime(timezone=True), server_default=func.now())
+
+
+class Stock(Base):
+    __tablename__ = "stocks"
+
+    id = Column(Integer, primary_key=True)
+    symbol = Column(String, unique=True, nullable=False)
+    name = Column(String, nullable=False)
+    price = Column(Numeric(14, 2), nullable=True)
+    price_updated_at = Column(DateTime(timezone=True), nullable=True)
